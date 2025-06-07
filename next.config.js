@@ -1,14 +1,16 @@
-const path = require('path');
+const path = require("path");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  distDir: 'dist',
-  basePath: '',
-  assetPrefix: '',
+  output: "export",
+  distDir: "dist",
+  basePath:
+    process.env.NODE_ENV === "production" ? "/qaisermajeed.github.io" : "",
+  assetPrefix:
+    process.env.NODE_ENV === "production" ? "/qaisermajeed.github.io/" : "",
   trailingSlash: true,
   experimental: {
-    outputFileTracingRoot: path.join(__dirname, '../'),
+    outputFileTracingRoot: path.join(__dirname, "../"),
   },
   eslint: {
     ignoreDuringBuilds: true,
@@ -16,10 +18,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  images: { 
+  images: {
     unoptimized: true,
-    loader: 'custom',
-    loaderFile: './image-loader.js'
+    loader: "custom",
+    loaderFile: "./image-loader.js",
   },
 };
 
