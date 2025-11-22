@@ -108,11 +108,11 @@ const Projects = () => {
             <span className="text-sm font-medium">Portfolio</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4">
-            Featured <span className="gradient-text">Projects</span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black mb-4 tracking-tight">
+            Epic <span className="golden-shimmer">Quests</span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Showcasing expertise in full-stack development across various industries
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto font-body italic">
+            Chronicles of legendary conquests across the digital kingdoms
           </p>
         </motion.div>
 
@@ -151,9 +151,9 @@ const Projects = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group relative card-hover tilt-card"
+              className="group relative"
             >
-              <div className="relative h-full bg-card rounded-2xl overflow-hidden border border-border shadow-lg tilt-card-inner">
+              <div className="relative h-full parchment-card ornate-border overflow-hidden shadow-lg corner-flourish">
                 {project.featured && (
                   <div className="absolute top-4 right-4 z-10">
                     <Badge className="gradient-primary border-0 text-white">
