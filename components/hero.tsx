@@ -200,7 +200,7 @@ const Hero = () => {
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20" />
                   <Image
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop"
+                    src="https://avatars.githubusercontent.com/u/95329927?v=4"
                     alt="Qaisar Majeed - Full Stack Developer"
                     fill
                     className="object-cover"
