@@ -3,7 +3,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useState, useEffect } from 'react'
+import { Code2, Database, Cloud, Zap } from 'lucide-react'
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -11,39 +11,72 @@ const Skills = () => {
     threshold: 0.1,
   })
 
-  const [animatedSkills, setAnimatedSkills] = useState<{ [key: string]: number }>({})
-
-  const skills = [
-    { name: 'C#/.NET', level: 95, color: 'bg-purple-500' },
-    { name: 'React.js', level: 90, color: 'bg-blue-500' },
-    { name: 'JavaScript/TypeScript', level: 92, color: 'bg-yellow-500' },
-    { name: 'ASP.NET MVC/Web API', level: 93, color: 'bg-green-500' },
-    { name: 'SQL Server', level: 88, color: 'bg-red-500' },
-    { name: 'Azure Cloud', level: 85, color: 'bg-indigo-500' },
-    { name: 'MongoDB', level: 80, color: 'bg-emerald-500' },
-    { name: 'Node.js', level: 82, color: 'bg-lime-500' },
-    { name: 'Entity Framework', level: 90, color: 'bg-orange-500' },
-    { name: 'Git/TFS', level: 87, color: 'bg-pink-500' },
-    { name: 'HTML/CSS', level: 94, color: 'bg-cyan-500' },
-    { name: 'DevOps', level: 78, color: 'bg-violet-500' },
+  const skillCategories = [
+    {
+      icon: <Code2 className="h-6 w-6" />,
+      title: 'Frontend Development',
+      color: 'from-blue-500 to-cyan-500',
+      skills: [
+        { name: 'React.js', level: 90 },
+        { name: 'TypeScript', level: 92 },
+        { name: 'JavaScript', level: 93 },
+        { name: 'HTML/CSS', level: 94 },
+        { name: 'Next.js', level: 88 },
+        { name: 'Tailwind CSS', level: 90 },
+      ]
+    },
+    {
+      icon: <Database className="h-6 w-6" />,
+      title: 'Backend Development',
+      color: 'from-purple-500 to-pink-500',
+      skills: [
+        { name: 'C#/.NET', level: 95 },
+        { name: 'ASP.NET MVC', level: 93 },
+        { name: 'Web API', level: 92 },
+        { name: 'Node.js', level: 82 },
+        { name: 'Entity Framework', level: 90 },
+        { name: 'SignalR', level: 85 },
+      ]
+    },
+    {
+      icon: <Database className="h-6 w-6" />,
+      title: 'Database & Storage',
+      color: 'from-green-500 to-emerald-500',
+      skills: [
+        { name: 'SQL Server', level: 88 },
+        { name: 'MongoDB', level: 80 },
+        { name: 'PostgreSQL', level: 78 },
+        { name: 'Redis', level: 75 },
+      ]
+    },
+    {
+      icon: <Cloud className="h-6 w-6" />,
+      title: 'Cloud & DevOps',
+      color: 'from-orange-500 to-red-500',
+      skills: [
+        { name: 'Azure Cloud', level: 85 },
+        { name: 'Azure Functions', level: 83 },
+        { name: 'Docker', level: 80 },
+        { name: 'CI/CD', level: 82 },
+        { name: 'Git/TFS', level: 87 },
+      ]
+    },
   ]
 
-  useEffect(() => {
-    if (inView) {
-      const timer = setTimeout(() => {
-        const animated: { [key: string]: number } = {}
-        skills.forEach(skill => {
-          animated[skill.name] = skill.level
-        })
-        setAnimatedSkills(animated)
-      }, 300)
-      return () => clearTimeout(timer)
-    }
-  }, [inView, skills])
+  const tools = [
+    'Visual Studio',
+    'VS Code',
+    'Azure DevOps',
+    'Postman',
+    'Figma',
+    'Git',
+    'Docker',
+    'Jira'
+  ]
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -51,69 +84,115 @@ const Skills = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Technical Skills
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-6">
+            <Zap className="h-4 w-4 text-primary" />
+            <span className="text-sm font-medium">Expertise</span>
+          </div>
+
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+            Skills & <span className="gradient-text">Technologies</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
             Proficient in modern technologies and frameworks for full-stack development
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {skills.map((skill, index) => (
+        {/* Skill Categories Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {skillCategories.map((category, categoryIndex) => (
             <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="space-y-2"
+              key={category.title}
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: categoryIndex * 0.1 }}
+              className="relative group"
             >
-              <div className="flex justify-between items-center">
-                <span className="font-semibold text-foreground">{skill.name}</span>
-                <span className="text-sm text-muted-foreground">{skill.level}%</span>
-              </div>
-              
-              <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
-                <motion.div
-                  className={`h-full ${skill.color} rounded-full relative overflow-hidden`}
-                  initial={{ width: 0 }}
-                  animate={{ width: inView ? `${animatedSkills[skill.name] || 0}%` : 0 }}
-                  transition={{ duration: 1.5, delay: index * 0.1, ease: "easeOut" }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse" />
-                </motion.div>
+              <div className="relative p-8 rounded-3xl bg-card border border-border hover:border-primary/50 transition-all duration-300 overflow-hidden">
+                {/* Background Gradient */}
+                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${category.color} opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity`} />
+
+                {/* Header */}
+                <div className="flex items-center gap-3 mb-6 relative z-10">
+                  <div className={`p-3 rounded-xl bg-gradient-to-br ${category.color} text-white`}>
+                    {category.icon}
+                  </div>
+                  <h3 className="text-xl font-bold">{category.title}</h3>
+                </div>
+
+                {/* Skills */}
+                <div className="space-y-4 relative z-10">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div key={skill.name}>
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-medium">{skill.name}</span>
+                        <span className="text-sm text-muted-foreground font-mono">{skill.level}%</span>
+                      </div>
+                      <div className="relative h-2 bg-muted rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
+                          transition={{
+                            duration: 1.5,
+                            delay: categoryIndex * 0.1 + skillIndex * 0.1,
+                            ease: "easeOut"
+                          }}
+                          className={`absolute inset-y-0 left-0 bg-gradient-to-r ${category.color} rounded-full`}
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse" />
+                        </motion.div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Additional Skills Categories */}
+        {/* Tools & Technologies */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="text-center"
         >
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
-            <h3 className="font-semibold text-foreground mb-3">Frontend</h3>
-            <p className="text-sm text-muted-foreground">
-              React, JavaScript, TypeScript, HTML5, CSS3, jQuery, Responsive Design
-            </p>
+          <h3 className="text-2xl font-bold mb-8">Tools & Software</h3>
+          <div className="flex flex-wrap justify-center gap-4">
+            {tools.map((tool, index) => (
+              <motion.div
+                key={tool}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.5, delay: 0.7 + index * 0.05 }}
+                className="px-6 py-3 rounded-full glass border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300 cursor-default"
+              >
+                <span className="font-medium">{tool}</span>
+              </motion.div>
+            ))}
           </div>
-          
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
-            <h3 className="font-semibold text-foreground mb-3">Backend</h3>
-            <p className="text-sm text-muted-foreground">
-              C#/.NET, ASP.NET MVC, Web API, Node.js, Entity Framework, SignalR
-            </p>
-          </div>
-          
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
-            <h3 className="font-semibold text-foreground mb-3">Cloud & Tools</h3>
-            <p className="text-sm text-muted-foreground">
-              Azure Functions, Azure AD, SQL Server, MongoDB, Git/TFS, DevOps
-            </p>
-          </div>
+        </motion.div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
+        >
+          {[
+            { value: '7+', label: 'Years Experience' },
+            { value: '20+', label: 'Technologies' },
+            { value: '50+', label: 'Projects' },
+            { value: '100%', label: 'Dedication' },
+          ].map((stat, index) => (
+            <div
+              key={stat.label}
+              className="text-center p-6 rounded-2xl glass border border-border hover:border-primary/50 transition-all duration-300"
+            >
+              <div className="text-4xl font-bold gradient-text mb-2">{stat.value}</div>
+              <div className="text-sm text-muted-foreground">{stat.label}</div>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

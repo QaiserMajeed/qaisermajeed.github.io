@@ -4,8 +4,9 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
-import { ExternalLink, Github, Filter } from 'lucide-react'
+import { ExternalLink, Github, Code2, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import Image from 'next/image'
 
 const Projects = () => {
@@ -20,71 +21,81 @@ const Projects = () => {
     {
       id: 1,
       title: 'Exelsys for Microsoft Teams',
-      description: 'HCM companion app for Microsoft Teams with comprehensive employee management features, real-time notifications, and seamless integration.',
-      image: 'https://i.pinimg.com/736x/c5/6a/ef/c56aef6147b1fb658e59f89ccff377e2.jpg',
+      description: 'Enterprise HCM companion app seamlessly integrated with Microsoft Teams, featuring real-time notifications, comprehensive employee management, and Azure cloud deployment.',
+      image: 'https://images.unsplash.com/photo-1611944212129-29977ae1398c?w=800&h=600&fit=crop',
       technologies: ['React', '.NET', 'Microsoft Teams', 'Azure', 'SignalR'],
       category: 'enterprise',
       duration: 'Jul 2022 - Present',
-      features: ['Real-time notifications', 'Employee management', 'Teams integration', 'Azure deployment']
+      featured: true,
+      link: '#',
+      github: '#'
     },
     {
       id: 2,
       title: 'EcoBreeze SMART IoT',
-      description: 'IoT air purification device with comprehensive monitoring portal, real-time data analytics, and smart automation features.',
-      image: 'https://lh5.googleusercontent.com/-BXAzS5zCgMe8YVU7-rhPhru6ZKnRG8mVRrxdCCl1XnhhSgB8eUq1zNndNrHXjolUuryuXrhydHjDgRQ6CYadrAJJYl73wOXHX7M5BZwanVtFobIJ9gOoY5Vjgq2NFrmwuoR2PB7Xq0YO6GKqg',
+      description: 'Cutting-edge IoT air purification system with comprehensive monitoring portal, real-time analytics, intelligent automation, and mobile-responsive design.',
+      image: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop',
       technologies: ['React', 'Node.js', 'IoT', 'MongoDB', 'Real-time Analytics'],
       category: 'iot',
       duration: 'Sep 2022 - Aug 2024',
-      features: ['Real-time monitoring', 'Data analytics', 'Smart automation', 'Mobile responsive']
+      featured: true,
+      link: '#',
+      github: '#'
     },
     {
       id: 3,
       title: 'Symcue Trading Platform',
-      description: 'Comprehensive trading platform with advanced signal generation, portfolio management, and real-time market data integration.',
-      image: 'https://s-media-cache-ak0.pinimg.com/originals/e8/74/0a/e8740a5d6d703e3231f59a00a4ca9479.jpg',
+      description: 'Advanced trading platform with AI-powered signal generation, comprehensive portfolio management, and real-time market data integration.',
+      image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop',
       technologies: ['React', 'C#', 'SQL Server', 'Web API', 'Real-time Data'],
       category: 'fintech',
       duration: 'Completed',
-      features: ['Signal generation', 'Portfolio management', 'Real-time data', 'Advanced analytics']
+      featured: true,
+      link: '#',
+      github: '#'
     },
     {
       id: 4,
       title: 'Real Estate CRM',
-      description: 'Custom CRM solution designed specifically for real estate agents with lead management, property tracking, and client communication tools.',
-      image: 'https://i.pinimg.com/originals/d0/3b/26/d03b262cb501430117c36cb49f792455.png',
+      description: 'Custom CRM solution designed for real estate professionals with advanced lead management, property tracking, and client communication tools.',
+      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop',
       technologies: ['ASP.NET MVC', 'C#', 'SQL Server', 'jQuery', 'Bootstrap'],
       category: 'crm',
       duration: 'Completed',
-      features: ['Lead management', 'Property tracking', 'Client communication', 'Reporting system']
+      featured: false,
+      link: '#',
+      github: '#'
     },
     {
       id: 5,
       title: 'Straton Home Decor',
-      description: 'E-commerce platform for home decor with modern design, shopping cart functionality, payment integration, and inventory management.',
-      image: 'https://i.ytimg.com/vi/7zSR-CsDQTw/maxresdefault.jpg',
+      description: 'Modern e-commerce platform featuring elegant design, seamless shopping experience, secure payment integration, and efficient inventory management.',
+      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop',
       technologies: ['React', '.NET Core', 'SQL Server', 'Payment Gateway', 'Azure'],
       category: 'ecommerce',
       duration: 'Completed',
-      features: ['Product catalog', 'Shopping cart', 'Payment integration', 'Order management']
+      featured: false,
+      link: '#',
+      github: '#'
     }
   ]
 
   const filters = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'enterprise', label: 'Enterprise' },
-    { id: 'iot', label: 'IoT' },
-    { id: 'fintech', label: 'FinTech' },
-    { id: 'crm', label: 'CRM' },
-    { id: 'ecommerce', label: 'E-commerce' }
+    { id: 'all', label: 'All Projects', count: projects.length },
+    { id: 'enterprise', label: 'Enterprise', count: 1 },
+    { id: 'iot', label: 'IoT', count: 1 },
+    { id: 'fintech', label: 'FinTech', count: 1 },
+    { id: 'crm', label: 'CRM', count: 1 },
+    { id: 'ecommerce', label: 'E-commerce', count: 1 }
   ]
 
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
+  const filteredProjects = activeFilter === 'all'
+    ? projects
     : projects.filter(project => project.category === activeFilter)
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -92,11 +103,16 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Featured Projects
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-6">
+            <Code2 className="h-4 w-4 text-primary" />
+            <span className="text-sm font-medium">Portfolio</span>
+          </div>
+
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+            Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Showcasing my expertise in full-stack development across various industries
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+            Showcasing expertise in full-stack development across various industries
           </p>
         </motion.div>
 
@@ -105,19 +121,25 @@ const Projects = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-2 mb-12"
+          className="flex flex-wrap justify-center gap-2 mb-16"
         >
           {filters.map((filter) => (
-            <Button
+            <button
               key={filter.id}
-              variant={activeFilter === filter.id ? "default" : "outline"}
-              size="sm"
               onClick={() => setActiveFilter(filter.id)}
-              className="transition-all duration-200"
+              className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+                activeFilter === filter.id
+                  ? 'gradient-primary text-white shadow-lg scale-105'
+                  : 'bg-background hover:bg-accent border border-border'
+              }`}
             >
-              <Filter className="h-4 w-4 mr-2" />
               {filter.label}
-            </Button>
+              <span className={`ml-2 text-xs ${
+                activeFilter === filter.id ? 'opacity-80' : 'opacity-60'
+              }`}>
+                ({filter.count})
+              </span>
+            </button>
           ))}
         </motion.div>
 
@@ -129,67 +151,110 @@ const Projects = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-background rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+              className="group relative card-hover"
             >
-              {/* Project Image */}
-              <div className="relative h-48 bg-muted overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                {/* Overlay buttons */}
-                <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Button size="icon" variant="secondary" className="h-8 w-8">
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                  <Button size="icon" variant="secondary" className="h-8 w-8">
-                    <Github className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
+              <div className="relative h-full bg-card rounded-2xl overflow-hidden border border-border shadow-lg">
+                {project.featured && (
+                  <div className="absolute top-4 right-4 z-10">
+                    <Badge className="gradient-primary border-0 text-white">
+                      <Sparkles className="h-3 w-3 mr-1" />
+                      Featured
+                    </Badge>
+                  </div>
+                )}
 
-              {/* Project Content */}
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
-                    {project.duration}
-                  </span>
-                </div>
+                {/* Project Image */}
+                <div className="relative h-56 overflow-hidden bg-muted">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                  {project.description}
-                </p>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-1 mb-4">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
+                  {/* Overlay buttons */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <Button
+                      size="sm"
+                      className="gradient-primary border-0 shadow-xl"
+                      asChild
                     >
-                      {tech}
-                    </span>
-                  ))}
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        View
+                      </a>
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      className="shadow-xl"
+                      asChild
+                    >
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="h-4 w-4 mr-2" />
+                        Code
+                      </a>
+                    </Button>
+                  </div>
                 </div>
 
-                {/* Features */}
-                <div className="space-y-1">
-                  <h4 className="text-sm font-medium text-foreground">Key Features:</h4>
-                  <ul className="text-xs text-muted-foreground space-y-1">
-                    {project.features.slice(0, 3).map((feature, idx) => (
-                      <li key={idx} className="flex items-center">
-                        <span className="w-1 h-1 bg-primary rounded-full mr-2" />
-                        {feature}
-                      </li>
+                {/* Project Content */}
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-xl font-bold group-hover:text-primary transition-colors line-clamp-1">
+                      {project.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech) => (
+                      <Badge
+                        key={tech}
+                        variant="secondary"
+                        className="text-xs font-normal"
+                      >
+                        {tech}
+                      </Badge>
                     ))}
-                  </ul>
+                  </div>
+
+                  {/* Duration */}
+                  <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                    <span className="text-xs text-muted-foreground">{project.duration}</span>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8"
+                        asChild
+                      >
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <Github className="h-4 w-4" />
+                        </a>
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8"
+                        asChild
+                      >
+                        <a href={project.link} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Gradient Border Effect on Hover */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/50 via-purple-500/50 to-primary/50 blur-xl -z-10" />
                 </div>
               </div>
             </motion.div>
@@ -201,14 +266,17 @@ const Projects = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center mt-12"
+          className="text-center mt-16"
         >
-          <p className="text-muted-foreground mb-4">
-            Interested in seeing more of my work or discussing a project?
-          </p>
-          <Button size="lg" asChild>
-            <a href="#contact">Get In Touch</a>
-          </Button>
+          <div className="max-w-2xl mx-auto p-8 rounded-3xl glass border border-primary/20">
+            <h3 className="text-2xl font-bold mb-3">Interested in collaboration?</h3>
+            <p className="text-muted-foreground mb-6">
+              I'm always excited to work on new projects and bring ideas to life
+            </p>
+            <Button size="lg" className="gradient-primary border-0 shadow-lg hover:shadow-xl transition-all">
+              <a href="#contact">Get In Touch</a>
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>
