@@ -1,11 +1,9 @@
 
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from 'sonner'
-
-const inter = Inter({ subsets: ['latin'] })
+import { CustomCursor } from '@/components/custom-cursor'
 
 export const metadata: Metadata = {
   title: 'Qaisar Majeed - Full Stack Developer',
@@ -26,13 +24,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className="font-body antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
+          <CustomCursor />
           {children}
           <Toaster position="top-right" />
         </ThemeProvider>

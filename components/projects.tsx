@@ -108,7 +108,7 @@ const Projects = () => {
             <span className="text-sm font-medium">Portfolio</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4">
             Featured <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -151,9 +151,9 @@ const Projects = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group relative card-hover"
+              className="group relative card-hover tilt-card"
             >
-              <div className="relative h-full bg-card rounded-2xl overflow-hidden border border-border shadow-lg">
+              <div className="relative h-full bg-card rounded-2xl overflow-hidden border border-border shadow-lg tilt-card-inner">
                 {project.featured && (
                   <div className="absolute top-4 right-4 z-10">
                     <Badge className="gradient-primary border-0 text-white">
@@ -269,7 +269,7 @@ const Projects = () => {
           className="text-center mt-16"
         >
           <div className="max-w-2xl mx-auto p-8 rounded-3xl glass border border-primary/20">
-            <h3 className="text-2xl font-bold mb-3">Interested in collaboration?</h3>
+            <h3 className="text-2xl font-heading font-bold mb-3">Interested in collaboration?</h3>
             <p className="text-muted-foreground mb-6">
               I'm always excited to work on new projects and bring ideas to life
             </p>
