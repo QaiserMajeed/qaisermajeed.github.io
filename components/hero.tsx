@@ -9,11 +9,11 @@ import Image from 'next/image'
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Animated Background Elements */}
+      {/* Atmospheric Background - Candlelight Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 gradient-primary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000" />
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-amber-400/10 to-orange-500/5 rounded-full filter blur-3xl candlelight" />
+        <div className="absolute top-40 right-10 w-80 h-80 bg-gradient-to-br from-red-900/10 to-amber-700/5 rounded-full filter blur-3xl candlelight animation-delay-1000" />
+        <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-gradient-to-br from-yellow-600/10 to-red-800/5 rounded-full filter blur-3xl candlelight animation-delay-2000" />
       </div>
 
       <div className="max-w-7xl mx-auto w-full">
@@ -30,10 +30,10 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20"
+              className="inline-flex items-center gap-2 px-5 py-2 ornate-border bg-card/80 backdrop-blur-sm"
             >
-              <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium">Available for new opportunities</span>
+              <Sparkles className="h-4 w-4 text-primary candlelight" />
+              <span className="text-sm font-heading tracking-wide">Quest Status: <span className="text-primary font-bold">Available</span></span>
             </motion.div>
 
             <motion.div
@@ -41,9 +41,11 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-bold leading-tight">
-                Hi, I'm{' '}
-                <span className="glitch gradient-text" data-text="Qaisar Majeed">
+              <h1 className="text-5xl sm:text-6xl lg:text-8xl font-heading font-black leading-tight tracking-tight">
+                <span className="block text-muted-foreground text-xl sm:text-2xl lg:text-3xl font-normal mb-4 italic tracking-wider">
+                  ⚔ The Chronicles of ⚔
+                </span>
+                <span className="golden-shimmer block">
                   Qaisar Majeed
                 </span>
               </h1>
@@ -53,23 +55,23 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-2xl sm:text-3xl lg:text-4xl font-heading font-semibold text-muted-foreground"
+              className="text-2xl sm:text-3xl lg:text-5xl font-heading font-bold text-primary tracking-wide"
             >
-              Full Stack Developer
+              <span className="text-muted-foreground font-body italic font-normal">Master of the</span> Digital Realms
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed"
+              className="text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed font-body"
             >
-              Crafting exceptional digital experiences with{' '}
-              <span className="text-primary font-semibold">C#/.NET</span>,{' '}
-              <span className="text-primary font-semibold">React</span>,{' '}
-              <span className="text-primary font-semibold">TypeScript</span>, and{' '}
-              <span className="text-primary font-semibold">Azure</span>.
-              7+ years of turning ideas into reality.
+              <span className="text-primary font-bold">VII years</span> wielding the arcane arts of{' '}
+              <span className="font-mono text-base bg-card px-2 py-0.5 rounded border border-border">.NET</span>,{' '}
+              <span className="font-mono text-base bg-card px-2 py-0.5 rounded border border-border">React</span>, and{' '}
+              <span className="font-mono text-base bg-card px-2 py-0.5 rounded border border-border">Azure</span>{' '}
+              sorcery. Currently forging legendary systems at{' '}
+              <span className="font-heading text-foreground font-bold">Insurwave</span> in the realm of London.
             </motion.p>
 
             {/* Location & Contact Info */}
@@ -98,16 +100,16 @@ const Hero = () => {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="flex flex-wrap gap-4 pt-4"
             >
-              <Button size="lg" className="group magnetic-button liquid-button gradient-primary border-0 shadow-lg hover:shadow-xl transition-all">
+              <Button size="lg" className="group ornate-border bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-wider shadow-lg hover:shadow-xl transition-all">
                 <a href="#contact" className="flex items-center">
-                  Let's Talk
+                  Begin Quest
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
 
-              <Button variant="outline" size="lg" className="group magnetic-button liquid-button">
+              <Button variant="outline" size="lg" className="group ornate-border font-heading tracking-wide hover:bg-accent/10">
                 <Download className="mr-2 h-4 w-4" />
-                Download CV
+                Scroll of Deeds
               </Button>
 
               <div className="flex gap-2">

@@ -89,11 +89,11 @@ const Skills = () => {
             <span className="text-sm font-medium">Expertise</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4">
-            Skills & <span className="holographic">Technologies</span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black mb-4 tracking-tight">
+            Mastered <span className="golden-shimmer">Abilities</span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Proficient in modern technologies and frameworks for full-stack development
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto font-body italic">
+            A tome of powerful spells and enchantments for conquering digital challenges
           </p>
         </motion.div>
 
@@ -105,9 +105,9 @@ const Skills = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: categoryIndex * 0.1 }}
-              className="relative group tilt-card"
+              className="relative group"
             >
-              <div className="relative p-8 rounded-3xl bg-card border border-border hover:border-primary/50 transition-all duration-300 overflow-hidden tilt-card-inner scanlines">
+              <div className="relative p-8 parchment-card ornate-border corner-flourish hover:border-primary/50 transition-all duration-300 overflow-hidden">
                 {/* Background Gradient */}
                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${category.color} opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity`} />
 
@@ -156,7 +156,7 @@ const Skills = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <h3 className="text-2xl font-heading font-bold mb-8">Tools & Software</h3>
+          <h3 className="text-2xl font-heading font-bold mb-8 tracking-wide">Arsenal & Equipment</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {tools.map((tool, index) => (
               <motion.div
@@ -164,7 +164,7 @@ const Skills = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5, delay: 0.7 + index * 0.05 }}
-                className="px-6 py-3 rounded-full glass border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300 cursor-default magnetic-button"
+                className="px-6 py-3 parchment-card ornate-border hover:border-primary/50 hover:shadow-lg transition-all duration-300 cursor-default font-mono text-sm"
               >
                 <span className="font-medium">{tool}</span>
               </motion.div>

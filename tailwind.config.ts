@@ -10,8 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['Space Grotesk', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
-        body: ['Outfit', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['Cinzel', 'serif'],
+        body: ['Crimson Pro', 'Georgia', 'serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
