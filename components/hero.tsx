@@ -41,9 +41,9 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-bold leading-tight">
                 Hi, I'm{' '}
-                <span className="gradient-text">
+                <span className="glitch gradient-text" data-text="Qaisar Majeed">
                   Qaisar Majeed
                 </span>
               </h1>
@@ -53,7 +53,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-muted-foreground"
+              className="text-2xl sm:text-3xl lg:text-4xl font-heading font-semibold text-muted-foreground"
             >
               Full Stack Developer
             </motion.h2>
@@ -98,14 +98,14 @@ const Hero = () => {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="flex flex-wrap gap-4 pt-4"
             >
-              <Button size="lg" className="group gradient-primary border-0 shadow-lg hover:shadow-xl transition-all">
+              <Button size="lg" className="group magnetic-button liquid-button gradient-primary border-0 shadow-lg hover:shadow-xl transition-all">
                 <a href="#contact" className="flex items-center">
                   Let's Talk
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
 
-              <Button variant="outline" size="lg" className="group">
+              <Button variant="outline" size="lg" className="group magnetic-button liquid-button">
                 <Download className="mr-2 h-4 w-4" />
                 Download CV
               </Button>
